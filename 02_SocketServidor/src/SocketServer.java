@@ -30,10 +30,17 @@ public class SocketServer {
 				BufferedReader bf = new BufferedReader(entrada);
 
 				String stringRecibido = bf.readLine();
-				System.out.println("SERVIDOR: me ha llegado del cliente: " + stringRecibido);
+
 				String[] operadores = stringRecibido.split("-");
 
 				int numero1 = Integer.parseInt(operadores[0]);
+
+				if (numero1 == 0) {
+					System.out.println("Finalizando ejecución...");
+					break;
+				}
+				System.out.println("SERVIDOR: me ha llegado del cliente: " + stringRecibido);
+
 				int numero2 = Integer.parseInt(operadores[1]);
 				int operacion = Integer.parseInt(operadores[2]);
 				int resultado = 0;

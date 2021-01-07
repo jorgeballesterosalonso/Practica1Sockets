@@ -27,25 +27,33 @@ public class SocketCliente {
 			entrada = new InputStreamReader(socketCliente.getInputStream());
 			salida = new PrintStream(socketCliente.getOutputStream());
 
-			System.out.println("Cliente, introduzca los números a operar ");
+			System.out
+					.println("Cliente, introduzca los números a operar e introduzca un 0 si no quiere seguir operando");
 
 			String numero1 = sc.nextLine();
-			System.out.println("Ahora introduzca el segundo número a operar: ");
-			String numero2 = sc.nextLine();
-			System.out.println("Indique, por favor, el tipo de operación que desea hacer:");
-			System.out.println("1) Sumar");
-			System.out.println("2) Restar");
-			System.out.println("3) Multiplicar");
-			System.out.println("4) Dividir");
-			String operacion = sc.nextLine();
+			if (numero1.equals("0")) {
+				System.out.println("Finalizando la ejecución...");
 
-			String operandos = numero1 + "-" + numero2 + "-" + operacion;
+			} else {
+				System.out.println("Ahora introduzca el segundo número a operar: ");
+				String numero2 = sc.nextLine();
+				System.out.println("Indique, por favor, el tipo de operación que desea hacer:");
+				System.out.println("1) Sumar");
+				System.out.println("2) Restar");
+				System.out.println("3) Multiplicar");
+				System.out.println("4) Dividir");
+				String operacion = sc.nextLine();
 
-			salida.println(operandos);
+				String operandos = numero1 + "-" + numero2 + "-" + operacion;
 
-			BufferedReader bf = new BufferedReader(entrada);
-			String resultado = bf.readLine();
-			System.out.println("El resultado de la operacion entre " + numero1 + " y " + numero2 + " es: " + resultado);
+				salida.println(operandos);
+
+				BufferedReader bf = new BufferedReader(entrada);
+				String resultado = bf.readLine();
+				System.out.println(
+						"El resultado de la operacion entre " + numero1 + " y " + numero2 + " es: " + resultado);
+			}
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
